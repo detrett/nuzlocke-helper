@@ -1,4 +1,5 @@
 import './styles.css';
+import { pokemonAvailableInVersion } from './helper';
 import Pokedex from 'pokedex-promise-v2';
 const pokedex = new Pokedex();
 
@@ -11,21 +12,12 @@ const pokedex = new Pokedex();
 let version = 'heartgold-soulsilver'
 
 // Returns true if a pokemon is found in any given version
-function pokemonAvailableInVersion(pokemonData, version) {
-  if(version.includes('-')) {
-    const games = version.split('-');
-    for (let game of games) {
-      if(pokemonData.game_indices.some(x => x.version.name === game)) {
-        return true;
-      }
-      return false;
-    }
-  }
-  if(pokemonData.game_indices.some(x => x.version.name === version)) {
-    return true;
-  }
-  return false;
-}
+// function pokemonAvailableInVersion(pokemonData, version) {
+//   const games = version.includes('-') ? version.split('-') : [version];
+//   return games.some(game => 
+//     pokemonData.game_indices.some(x => x.version.name === game)
+//   );
+// }
 
 
 pokedex.getPokemonByName('suicune')
