@@ -1,11 +1,11 @@
 {
-  "name": "webpack-template",
+  "name": "nuzlocke-helper",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --open --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
+    "start": "webpack serve --open --config webpack.config.js",
+    "build": "webpack --config webpack.config.js",
     "deploy": "gh-pages -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,6 +27,7 @@
     "webpack-merge": "^6.0.1"
   },
   "dependencies": {
-    "date-fns": "^4.1.0"
+    "date-fns": "^4.1.0",
+    "pokedex-promise-v2": "^4.2.0"
   }
 }
