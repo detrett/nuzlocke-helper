@@ -1,5 +1,5 @@
 import './styles.css';
-import { pokemonAvailableInVersion } from './helper';
+import { pokemonAvailableInVersion, filterMovesByVersion } from './helper';
 import Pokedex from 'pokedex-promise-v2';
 const pokedex = new Pokedex();
 
@@ -11,19 +11,13 @@ const pokedex = new Pokedex();
 
 let version = 'heartgold-soulsilver'
 
-// Returns true if a pokemon is found in any given version
-// function pokemonAvailableInVersion(pokemonData, version) {
-//   const games = version.includes('-') ? version.split('-') : [version];
-//   return games.some(game => 
-//     pokemonData.game_indices.some(x => x.version.name === game)
-//   );
-// }
-
-
-pokedex.getPokemonByName('suicune')
+pokedex.getPokemonByName('regice')
 .then((response) => {
   console.log(response);
-  console.log(pokemonAvailableInVersion(response, version));
+  if(pokemonAvailableInVersion(response, version)) {
+    const filteredMoves = filterMovesByVersion(response, version);
+    console.log(filteredMoves);
+  };
 })
 .catch((error) => {
   console.log('There was an ERROR: ', error);
